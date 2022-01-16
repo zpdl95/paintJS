@@ -5,9 +5,12 @@ const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const state = document.getElementById("jsState");
 const allClear = document.getElementById("jsAllClear");
+const saveBtn = document.getElementById("jsSave");
 
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 let painting = false;
 let filling = false;
@@ -82,12 +85,27 @@ function handleAllClear() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function handleCM(e) {
+  e.preventDefault();
+}
+
+function handleSave() {
+  const image = canvas.toDataURL("image/png", 1.0);
+  const link = document.createElement("a");
+  /* 다운받는 주소 */
+  link.href = image;
+  /* 다운받는 파일 이름 */
+  link.download = "canvas";
+  link.click();
+}
+
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
   window.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseenter", onMouseEnter);
   canvas.addEventListener("click", handleCanvasClick);
+  canvas.addEventListener("contextmenu", handleCM);
 }
 
 colors.forEach((color) => color.addEventListener("click", handleColorClick));
@@ -95,6 +113,8 @@ colors.forEach((color) => color.addEventListener("click", handleColorClick));
 range?.addEventListener("input", handleRangeChange);
 
 mode?.addEventListener("click", handleModeClick);
+
+saveBtn?.addEventListener("click", handleSave);
 
 allClear?.addEventListener("click", handleAllClear);
 
