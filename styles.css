@@ -27,10 +27,12 @@ body {
 
 .controls .controls__range {
   margin-bottom: 30px;
+  user-select: none;
 }
 
 .controls .controls__btns {
   margin-bottom: 30px;
+  user-select: none;
 }
 
 .controls .controls__btns button {
