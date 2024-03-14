@@ -6,7 +6,7 @@
 
 - ### HTML, CSS, JS
 
-### 배포된 앱 [URL]()
+### 배포된 앱 [URL](https://zpdl95.github.io/paintJS/)
 
 ## 첫 화면
 
